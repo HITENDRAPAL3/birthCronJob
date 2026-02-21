@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Cake, Mail, Lock, ArrowRight, Sparkles } from 'lucide-react';
 import toast from 'react-hot-toast';
+import loginImg from '../assets/LoginImageLeft.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -30,37 +31,52 @@ const Login = () => {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Decorative */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-dark-800 via-dark-900 to-dark-800 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-30">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={loginImg}
+          alt="Login Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient Blur Overlay - Concentrates blur behind text and fades out to the right */}
+        <div
+          className="absolute inset-0 bg-black/20 backdrop-blur-md"
+          style={{
+            maskImage: 'linear-gradient(to right, black 10%, rgba(0,0,0,0.5) 40%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, black 10%, rgba(0,0,0,0.5) 60%, transparent 100%)'
+          }}
+        />
+
+        {/* Optional: Keeping the floating effects but with lower opacity */}
+        <div className="absolute inset-0 opacity-0">
           <div className="absolute top-20 left-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float animate-delay-300" />
         </div>
-        
+
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center p-12">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl">
+            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl shadow-lg">
               <Cake size={32} className="text-white" />
             </div>
-            <h1 className="font-display text-3xl font-bold text-white">Birthday Reminder</h1>
+            <h1 className="font-display text-4xl font-bold text-white drop-shadow-2xl">Birthday Reminder</h1>
           </div>
-          
-          <h2 className="text-5xl font-display font-bold text-white mb-6 leading-tight">
+
+          <h2 className="text-4xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Never forget a <br />
-            <span className="gradient-text">birthday</span> again!
+            <span className="gradient-text brightness-125">birthday</span> again!
           </h2>
-          
-          <p className="text-xl text-dark-200 mb-8 max-w-md">
+
+          <p className="text-xl text-white font-medium mb-8 max-w-md drop-shadow-lg">
             Keep track of all your friends and family birthdays with smart email reminders.
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-dark-700/50 rounded-full text-dark-100">
+            <div className="flex items-center gap-2 px-4 py-2 bg-dark-900/60 backdrop-blur-md border border-white/10 rounded-full text-white shadow-xl">
               <Sparkles size={16} className="text-primary-400" />
               <span>Email Notifications</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-dark-700/50 rounded-full text-dark-100">
+            <div className="flex items-center gap-2 px-4 py-2 bg-dark-900/60 backdrop-blur-md border border-white/10 rounded-full text-white shadow-xl">
               <Sparkles size={16} className="text-accent-400" />
               <span>Configurable Reminders</span>
             </div>
