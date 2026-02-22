@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { birthdayApi, categoryApi } from '../services/api';
-import { 
-  Plus, 
-  Search, 
-  Edit2, 
-  Trash2, 
+import {
+  Plus,
+  Search,
+  Edit2,
+  Trash2,
   Cake,
   Calendar,
   Mail,
@@ -60,7 +60,7 @@ const Birthdays = () => {
 
     // Search filter
     if (searchQuery) {
-      filtered = filtered.filter(b => 
+      filtered = filtered.filter(b =>
         b.friendName.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -135,20 +135,6 @@ const Birthdays = () => {
           <h1 className="text-3xl font-display font-bold text-white">Birthdays</h1>
           <p className="text-dark-300 mt-1">Manage all your saved birthdays</p>
         </div>
-        <div className="flex gap-2">
-          <button onClick={() => setShowImportModal(true)} className="btn-secondary">
-            <Upload size={18} />
-            Import
-          </button>
-          <button onClick={handleExportIcal} className="btn-secondary">
-            <Download size={18} />
-            Export
-          </button>
-          <Link to="/birthdays/add" className="btn-primary">
-            <Plus size={20} />
-            Add Birthday
-          </Link>
-        </div>
       </div>
 
       {/* Search and Filters */}
@@ -163,7 +149,7 @@ const Birthdays = () => {
             className="input pl-12"
           />
         </div>
-        
+
         {/* Category Filter */}
         <div className="flex gap-2 flex-wrap">
           <button
@@ -180,8 +166,8 @@ const Birthdays = () => {
               className={`btn ${selectedCategory === cat.id ? 'btn-primary' : 'btn-secondary'}`}
               style={selectedCategory === cat.id ? {} : { borderColor: cat.color }}
             >
-              <span 
-                className="w-3 h-3 rounded-full" 
+              <span
+                className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: cat.color }}
               />
               {cat.name}
@@ -216,15 +202,9 @@ const Birthdays = () => {
           </h3>
           <p className="text-dark-400 mb-6 max-w-md mx-auto">
             {searchQuery || selectedCategory
-              ? 'Try a different search term or category' 
+              ? 'Try a different search term or category'
               : 'Start by adding your friends\' and family\'s birthdays to never miss their special day!'}
           </p>
-          {!searchQuery && !selectedCategory && (
-            <Link to="/birthdays/add" className="btn-primary">
-              <Plus size={18} />
-              Add Your First Birthday
-            </Link>
-          )}
         </div>
       ) : (
         <div className="grid gap-4">
@@ -238,7 +218,7 @@ const Birthdays = () => {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div 
+                    <div
                       className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0"
                       style={{
                         background: birthday.categoryColor
@@ -254,9 +234,9 @@ const Birthdays = () => {
                           {birthday.friendName}
                         </h3>
                         {birthday.categoryName && (
-                          <span 
+                          <span
                             className="px-2 py-0.5 rounded-full text-xs font-medium"
-                            style={{ 
+                            style={{
                               backgroundColor: `${birthday.categoryColor}20`,
                               color: birthday.categoryColor
                             }}
@@ -436,8 +416,8 @@ const ImportModal = ({ onClose, onSuccess }) => {
             <div className="bg-dark-600/50 rounded-lg p-4 mb-6">
               <p className="text-sm text-dark-300 mb-2">Example CSV format:</p>
               <code className="text-xs text-primary-400 block overflow-x-auto">
-                Name,Date,Email,Notes,Category<br/>
-                John Doe,1990-05-15,john@example.com,Gift: Books,Family<br/>
+                Name,Date,Email,Notes,Category<br />
+                John Doe,1990-05-15,john@example.com,Gift: Books,Family<br />
                 Jane Smith,1985-12-25,,Best friend,Friends
               </code>
             </div>
@@ -462,7 +442,7 @@ const ImportModal = ({ onClose, onSuccess }) => {
                 <div className="text-3xl font-bold text-green-400">{result.importedCount}</div>
                 <div className="text-green-300">birthdays imported successfully</div>
               </div>
-              
+
               {result.errors?.length > 0 && (
                 <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
                   <p className="text-red-400 font-medium mb-2">{result.errorCount} errors:</p>

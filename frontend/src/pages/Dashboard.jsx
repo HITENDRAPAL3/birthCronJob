@@ -100,9 +100,9 @@ const Dashboard = () => {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-display font-bold text-white">
-            Welcome back, {user?.name?.split(' ')[0]}! 👋
+            Welcome back, {user?.name?.split(' ')[0]}!
           </h1>
-          <p className="text-dark-300 mt-1">Here's what's happening with your birthdays</p>
+          <p className="text-dark-300 mt-1">See what's happening with your birthdays</p>
         </div>
         <div className="flex gap-2">
           <button onClick={() => setShowImportModal(true)} className="btn-secondary">
