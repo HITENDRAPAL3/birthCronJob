@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Cake, Mail, Lock, User, ArrowRight, Sparkles } from 'lucide-react';
 import toast from 'react-hot-toast';
+import registerGif from '../assets/flowerFieldRegisterPage.gif';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -43,51 +44,62 @@ const Register = () => {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Decorative */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-dark-800 via-dark-900 to-dark-800 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-32 right-20 w-80 h-80 bg-accent-500/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-32 left-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float animate-delay-300" />
-        </div>
-        
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+        {/* Background GIF */}
+        <img
+          src={registerGif}
+          alt="Register Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient Blur Overlay */}
+        <div
+          className="absolute inset-0 bg-black/20 backdrop-blur-md"
+          style={{
+            maskImage: 'linear-gradient(to right, black 20%, rgba(0,0,0,0.5) 40%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, black 10%, rgba(0,0,0,0.5) 40%, transparent 100%)'
+          }}
+        />
+
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center p-12">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl">
+            <div
+              className="p-3 rounded-2xl shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #db276cff 0%, #a1355fff 35%, #930a3cff 70%, #EF88AD 100%)' }}
+            >
               <Cake size={32} className="text-white" />
             </div>
-            <h1 className="font-display text-3xl font-bold text-white">Birthday Reminder</h1>
+            <h1 className="font-display text-4xl font-bold text-white drop-shadow-2xl">Birthday Reminder</h1>
           </div>
-          
-          <h2 className="text-5xl font-display font-bold text-white mb-6 leading-tight">
+
+          <h2 className="text-4xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Start tracking <br />
-            <span className="gradient-text">birthdays</span> today!
+            <span
+              className="bg-clip-text text-transparent brightness-125"
+              style={{ backgroundImage: 'linear-gradient(135deg, #aa2457ff 0%, #a11248ff 35%, #A53860 70%, #EF88AD 100%)' }}
+            >
+              birthdays
+            </span> today!
           </h2>
-          
-          <p className="text-xl text-dark-200 mb-8 max-w-md">
-            Join thousands of users who never miss celebrating their loved ones' special days.
+
+          <p className="text-xl text-white font-medium mb-8 max-w-md drop-shadow-lg">
+            Never miss your loved ones' special days.
           </p>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 text-dark-100">
-              <div className="p-2 bg-primary-500/20 rounded-lg">
+          {/* <div className="space-y-4">
+            <div className="flex items-center gap-3 text-white drop-shadow-md">
+              <div className="p-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/10">
                 <Sparkles size={18} className="text-primary-400" />
               </div>
-              <span>Unlimited birthday entries</span>
+              <span className="font-medium">Unlimited birthday entries</span>
             </div>
-            <div className="flex items-center gap-3 text-dark-100">
-              <div className="p-2 bg-accent-500/20 rounded-lg">
+            <div className="flex items-center gap-3 text-white drop-shadow-md">
+              <div className="p-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/10">
                 <Sparkles size={18} className="text-accent-400" />
               </div>
-              <span>Customizable email reminders</span>
+              <span className="font-medium">Customizable email reminders</span>
             </div>
-            <div className="flex items-center gap-3 text-dark-100">
-              <div className="p-2 bg-primary-500/20 rounded-lg">
-                <Sparkles size={18} className="text-primary-400" />
-              </div>
-              <span>Beautiful dashboard overview</span>
-            </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -117,7 +129,7 @@ const Register = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="input pl-12"
-                  placeholder="John Doe"
+                  placeholder="Palacio"
                   required
                 />
               </div>
