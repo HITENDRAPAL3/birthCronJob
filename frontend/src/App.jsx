@@ -9,6 +9,7 @@ import Birthdays from './pages/Birthdays';
 import AddBirthday from './pages/AddBirthday';
 import EditBirthday from './pages/EditBirthday';
 import Settings from './pages/Settings';
+import Summary from './pages/Summary';
 import LoadingSpinner from './components/LoadingSpinner';
 
 // Protected Route component
@@ -100,6 +101,7 @@ function App() {
           <Route path="birthdays" element={<Birthdays />} />
           <Route path="birthdays/add" element={<AddBirthday />} />
           <Route path="birthdays/edit/:id" element={<EditBirthday />} />
+          <Route path="summary" element={<Summary />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

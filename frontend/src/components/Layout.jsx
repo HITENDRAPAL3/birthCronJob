@@ -1,13 +1,14 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { 
-  Cake, 
-  LayoutDashboard, 
-  CalendarDays, 
-  Settings, 
+import {
+  Cake,
+  LayoutDashboard,
+  CalendarDays,
+  Settings,
   LogOut,
   Menu,
-  X 
+  X,
+  BarChart3
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -24,6 +25,7 @@ const Layout = () => {
   const navItems = [
     { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { to: '/birthdays', icon: CalendarDays, label: 'Birthdays' },
+    { to: '/summary', icon: BarChart3, label: 'Summary' },
     { to: '/settings', icon: Settings, label: 'Settings' },
   ];
 
@@ -32,10 +34,9 @@ const Layout = () => {
       to={to}
       onClick={() => setSidebarOpen(false)}
       className={({ isActive }) =>
-        `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-          isActive
-            ? 'bg-primary-500/20 text-primary-400 border-l-2 border-primary-500'
-            : 'text-dark-200 hover:bg-dark-600 hover:text-dark-50'
+        `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+          ? 'bg-primary-500/20 text-primary-400 border-l-2 border-primary-500'
+          : 'text-dark-200 hover:bg-dark-600 hover:text-dark-50'
         }`
       }
     >
@@ -48,7 +49,7 @@ const Layout = () => {
     <div className="min-h-screen bg-dark-900 flex">
       {/* Mobile Menu Overlay */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
@@ -56,9 +57,8 @@ const Layout = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-dark-800 border-r border-dark-600 flex flex-col transform transition-transform duration-300 ease-in-out ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-        }`}
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-dark-800 border-r border-dark-600 flex flex-col transform transition-transform duration-300 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+          }`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-dark-600">
