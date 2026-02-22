@@ -56,7 +56,10 @@ const Login = () => {
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center p-12">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl shadow-lg">
+            <div
+              className="p-3 rounded-2xl shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #db276cff 0%, #a1355fff 35%, #930a3cff 70%, #EF88AD 100%)' }}
+            >
               <Cake size={32} className="text-white" />
             </div>
             <h1 className="font-display text-4xl font-bold text-white drop-shadow-2xl">Birthday Reminder</h1>
@@ -64,14 +67,19 @@ const Login = () => {
 
           <h2 className="text-4xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Never forget a <br />
-            <span className="gradient-text brightness-125">birthday</span> again!
+            <span
+              className="bg-clip-text text-transparent brightness-125"
+              style={{ backgroundImage: 'linear-gradient(135deg, #aa2457ff 0%, #a11248ff 35%, #A53860 70%, #EF88AD 100%)' }}
+            >
+              birthday
+            </span> again!
           </h2>
 
           <p className="text-xl text-white font-medium mb-8 max-w-md drop-shadow-lg">
-            Keep track of all your friends and family birthdays with smart email reminders.
+            Keep track of all your friends and family birthdays with email reminders.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          {/* <div className="flex flex-wrap gap-4">
             <div className="flex items-center gap-2 px-4 py-2 bg-dark-900/60 backdrop-blur-md border border-white/10 rounded-full text-white shadow-xl">
               <Sparkles size={16} className="text-primary-400" />
               <span>Email Notifications</span>
@@ -80,36 +88,52 @@ const Login = () => {
               <Sparkles size={16} className="text-accent-400" />
               <span>Configurable Reminders</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-dark-900">
-        <div className="w-full max-w-md animate-fade-in">
+      <div
+        className="w-full lg:w-1/2 flex items-center justify-center p-8 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, #3A0519 0%, #670D2F 35%, #A53860 70%, #EF88AD 100%)'
+        }}
+      >
+        {/* Optional: Subtle Animated Overlay for depth */}
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px]" />
+
+        <div
+          className="w-full max-w-md animate-fade-in relative z-10 p-8 rounded-3xl border border-white/20 shadow-2xl backdrop-blur-xl"
+          style={{
+            background: 'linear-gradient(135deg, rgba(239, 136, 173, 0.15) 0%, rgba(165, 56, 96, 0.15) 35%, rgba(103, 13, 47, 0.15) 70%, rgba(58, 5, 25, 0.15) 100%)'
+          }}
+        >
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center justify-center gap-3 mb-8">
-            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl">
+            <div
+              className="p-3 rounded-2xl"
+              style={{ background: 'linear-gradient(135deg, #3A0519 0%, #670D2F 35%, #A53860 70%, #EF88AD 100%)' }}
+            >
               <Cake size={28} className="text-white" />
             </div>
-            <h1 className="font-display text-2xl font-bold text-white">Birthday Reminder</h1>
+            <h1 className="font-display text-2xl font-bold text-white shadow-sm">Birthday Reminder</h1>
           </div>
 
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-display font-bold text-white mb-2">Welcome back</h2>
-            <p className="text-dark-300">Sign in to your account to continue</p>
+            <h2 className="text-3xl font-display font-bold text-white mb-2 drop-shadow-md">Welcome back</h2>
+            <p className="text-white/80 font-medium">Sign in to your account to continue</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="animate-slide-up">
-              <label className="label">Email Address</label>
+              <label className="label text-white/90">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-dark-400" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60" size={20} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input pl-12"
+                  className="input pl-12 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 transition-all"
                   placeholder="you@example.com"
                   required
                 />
@@ -117,14 +141,14 @@ const Login = () => {
             </div>
 
             <div className="animate-slide-up animate-delay-100">
-              <label className="label">Password</label>
+              <label className="label text-white/90">Password</label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-dark-400" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60" size={20} />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="input pl-12"
+                  className="input pl-12 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 transition-all"
                   placeholder="••••••••"
                   required
                 />
@@ -134,7 +158,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-3.5 text-base animate-slide-up animate-delay-200"
+              className="btn-primary w-full py-3.5 text-base shadow-xl hover:shadow-primary-500/25 active:scale-[0.98] transition-all animate-slide-up animate-delay-200"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -153,9 +177,9 @@ const Login = () => {
             </button>
           </form>
 
-          <p className="mt-8 text-center text-dark-300 animate-slide-up animate-delay-300">
+          <p className="mt-8 text-center text-white/70 animate-slide-up animate-delay-300">
             Don't have an account?{' '}
-            <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
+            <Link to="/register" className="text-white font-bold hover:underline transition-all underline-offset-4 decoration-2">
               Create one
             </Link>
           </p>
